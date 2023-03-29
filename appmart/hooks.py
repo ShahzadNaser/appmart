@@ -93,11 +93,9 @@ app_license = "MIT"
 # DocType Class
 # ---------------
 # Override standard doctype classes
-
-# override_doctype_class = {
-#	"ToDo": "custom_app.overrides.CustomToDo"
-# }
-
+override_doctype_class = {
+	"Salary Slip": "appmart.overrides.controllers.salary_slip.CustomSalarySlip",
+}
 # Document Events
 # ---------------
 # Hook on document methods and events
