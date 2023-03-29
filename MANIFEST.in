@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include appmart *.css
+recursive-include appmart *.csv
+recursive-include appmart *.html
+recursive-include appmart *.ico
+recursive-include appmart *.js
+recursive-include appmart *.json
+recursive-include appmart *.md
+recursive-include appmart *.png
+recursive-include appmart *.py
+recursive-include appmart *.svg
+recursive-include appmart *.txt
+recursive-exclude appmart *.pyc
