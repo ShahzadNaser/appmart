@@ -7,7 +7,7 @@ from frappe.utils import flt
 
 
 def before_save(doc,method):
-    if doc.get("base") and doc.get("employee_salary_components"):
+    if False and doc.get("base") and doc.get("employee_salary_components"):
         total_amount = flt(0)
         for comp in doc.get("employee_salary_components"):
             if comp.get("type") == "Earning":
