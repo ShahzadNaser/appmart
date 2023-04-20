@@ -29,7 +29,7 @@ app_license = "MIT"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-# doctype_js = {"doctype" : "public/js/doctype.js"}
+doctype_js = {"Salary Structure Assignment" : "public/js/salary_structure_assignment.js"}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -95,18 +95,17 @@ app_license = "MIT"
 # Override standard doctype classes
 override_doctype_class = {
 	"Salary Slip": "appmart.overrides.controllers.salary_slip.CustomSalarySlip",
+	"Payroll Entry": "appmart.overrides.controllers.payroll_entry.CustomPayrollEntry",
 }
 # Document Events
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-#	"*": {
-#		"on_update": "method",
-#		"on_cancel": "method",
-#		"on_trash": "method"
-#	}
-# }
+doc_events = {
+	"Salary Structure Assignment": {
+		"before_save": "appmart.overrides.controllers.salary_structure_assignment.before_save",
+	}
+}
 
 # Scheduled Tasks
 # ---------------

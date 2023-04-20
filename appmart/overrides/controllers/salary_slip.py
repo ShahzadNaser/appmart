@@ -4,8 +4,7 @@
 import frappe
 from frappe import _
 from frappe.utils import getdate, formatdate, flt
-# from erpnext.payroll.doctype.salary_slip.salary_slip import SalarySlip
-from hrms.payroll.doctype.salary_slip.salary_slip import SalarySlip
+from erpnext.payroll.doctype.salary_slip.salary_slip import SalarySlip
 
 
 class CustomSalarySlip(SalarySlip):
@@ -51,8 +50,6 @@ class CustomSalarySlip(SalarySlip):
         data.update(salary_structure_assignment)
         data.update(employee)
         data.update(self.as_dict())
-        # self.hourly_rate = salary_structure_assignment.get("hourly_rate")
-
         # set values for components
         salary_components = frappe.get_all("Salary Component", fields=["salary_component_abbr"])
         for sc in salary_components:
@@ -61,7 +58,7 @@ class CustomSalarySlip(SalarySlip):
         for key in ('earnings', 'deductions'):
             for d in self.get(key):
                 data[d.abbr] = d.amount
-
+        
         # customization add data in cache for performance imporvement
         #frappe.cache().set_value(key, data, expires_in_sec=100)
         return data
