@@ -55,13 +55,16 @@ class CustomSalarySlip(SalarySlip):
         for sc in salary_components:
             data.setdefault(sc.salary_component_abbr, emp_salary_details.get(sc.salary_component_abbr) or 0)
 
-        for key in ('earnings', 'deductions'):
+        # shallow copy of data to store default amounts (without payment days) for tax calculation
+        default_data = data.copy()
+
+        for key in ("earnings", "deductions"):
             for d in self.get(key):
-                data[d.abbr] = d.amount
-        
-        # customization add data in cache for performance imporvement
-        #frappe.cache().set_value(key, data, expires_in_sec=100)
-        return data
+                default_data[d.abbr] = d.default_amount or 0
+                data[d.abbr] = d.amount or 0
+
+        return data, default_data
+
 
     # def make_loan_repayment_entry(self):
     #     from erpnext.loan_management.doctype.loan_repayment.loan_repayment import create_repayment_entry
